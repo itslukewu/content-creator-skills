@@ -1,11 +1,11 @@
 ---
 name: topic-finder
-description: "[English version, for English-speaking users; the Chinese version is topic-finder-zh in zh-CN/] Finds content topics for creators. Reads a config; if no reusable audience profile exists, first infers initial audience profiles from benchmark accounts' outperforming posts. Then searches for topics per fixed content pillar and openly across several sources, screens and de-duplicates them, and outputs a candidate topic table with source links and a readiness status. Writes to a topic library only after the user confirms. Use when the user asks to 'find topics', 'what should I post this week', or 'give me a batch of content ideas'."
+description: "[English version, for English-speaking users. Chinese version: ../zh/] Finds content topics for creators. Reads a config; if no reusable audience profile exists, first infers initial audience profiles from benchmark accounts' outperforming posts. Then searches for topics per fixed content pillar and openly across several sources, screens and de-duplicates them, and outputs a candidate topic table with source links and a readiness status. Writes to a topic library only after the user confirms. Use when the user asks to 'find topics', 'what should I post this week', or 'give me a batch of content ideas'."
 ---
 
 # topic-finder
 
-This is the English version, for English-speaking users. A Chinese version with the same content is in `zh-CN/` (skill name `topic-finder-zh`), for Chinese-speaking users. Install only one of the two.
+This is the English version, for English-speaking users. The Chinese version, with the same content, is in `../zh/` (skill name `topic-finder-zh`) for Chinese-speaking users. Install only one of the two.
 
 ## Inputs and outputs
 
