@@ -1,0 +1,70 @@
+# topic-finder example config
+# Copy to config.yaml and fill it in. Keep real account lists, database URLs, etc. local or in a private repo.
+# Never put secrets here. Secrets live in environment variables; list only the variable names.
+version: 1
+
+creator:
+  positioning: "<one-line positioning>"
+  platforms: [instagram]          # e.g. instagram, xiaohongshu, youtube
+  languages: [en]                 # e.g. en, zh
+
+audience:
+  # Leave personas empty and Step 1 will infer initial profiles from benchmark content.
+  review_every_days: 90           # applies only to source: inferred profiles; prompts a review, never expires them
+  personas: []
+  # - id: P01
+  #   name: "<audience name>"
+  #   description: "<who these people are>"
+  #   source: user_defined          # user_defined (explicitly chosen by the user) | inferred (derived from data)
+  #   generated_on: null            # generation date for inferred profiles, e.g. 2026-10-25
+  #   data_window: null             # time range of the data behind an inferred profile
+  #   observations: []              # content-grounded observations, each with evidence links
+  #   hypotheses: []                # hypotheses to verify, each marked self-reported or inferred
+
+pillars: []                       # fixed content pillars; may be empty. "open topic" is an allowed result, not a pillar
+# - name: "<pillar name>"
+#   brief: "<what this pillar promises the audience>"
+#   cadence: "<publishing cadence, e.g. daily, weekly>"
+
+sources:
+  benchmark:                      # Source A: benchmark accounts
+    enabled: true
+    platform: instagram
+    accounts: []                  # e.g. ["<account>", "<account>"]
+    lookback_days: 90
+    outlier_rp: 2.0
+    min_baseline_posts: 5
+  market_signals:                 # Source B: audience and market signals
+    enabled: true
+    include: [surveys_reports, communities, comments_qa, product_reviews, search_suggestions]
+    preferred_publishers: []      # optional: preferred institutions, research firms, media
+  saved_references:               # Source C: the user's saved references
+    enabled: false
+    location: "<where references are saved, e.g. a Notion page URL or a local folder>"
+    notes_field: null             # field holding the user's notes; null if there is none
+
+tools:                            # fill in for your own setup; not a fixed dependency of the skill
+  benchmark_scraper: "<e.g. an Instagram post scraper>"
+  transcript_fetcher: "<e.g. a Reels scraper with transcripts>"
+  credentials_env: []             # environment variable names only, e.g. [APIFY_TOKEN]
+
+topic_library:                    # existing topic library: used for de-duplication and as the write target after confirmation
+  enabled: false
+  location: "<database URL or file path>"
+  default_workflow_status: "<e.g. pending review>"
+  readiness_labels:               # optional: labels written to the library for each readiness status
+    ready_for_brief: "Ready for brief"
+    needs_verification: "Needs verification"
+    needs_testing: "Needs testing"
+    drop: "Drop"
+  field_map:                      # topic table field → database field name; the database's actual fields still win at write time
+    title: "<field name>"
+    audience: "<field name>"
+    sources: "<field name>"           # a text field that can hold links
+    primary_link: "<field name>"      # optional: a single URL field
+    pillar: "<field name>"
+    why: "<field name>"
+    angle: "<field name>"
+    readiness: "<field name>"         # Ready for brief / Needs verification / Needs testing / Drop
+    next_step: "<field name>"
+    workflow_status: "<field name>"   # approval or workflow status, kept separate from readiness
