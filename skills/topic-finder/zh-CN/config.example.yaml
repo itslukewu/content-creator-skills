@@ -1,0 +1,70 @@
+# topic-finder 配置示例（中文版，供中文用户使用）
+# 复制为 config.yaml 后填写。真实账号名单、数据库地址等放在本地或私有仓库。
+# 不要在这里写任何密钥；密钥只放环境变量，这里只写变量名。
+version: 1
+
+creator:
+  positioning: "<一句话定位>"
+  platforms: [xiaohongshu]        # 例：xiaohongshu, instagram, douyin
+  languages: [zh]                 # 例：zh, en
+
+audience:
+  # 留空 personas 时，第一步会从对标内容反推初始画像。
+  review_every_days: 90           # 只对 source: inferred 的画像生效：到期提醒复查，不会自动失效
+  personas: []
+  # - id: P01
+  #   name: "<受众名称>"
+  #   description: "<这类人是谁>"
+  #   source: user_defined          # user_defined（用户明确选择）| inferred（从数据反推）
+  #   generated_on: null            # inferred 画像的生成日期，例：2026-10-25
+  #   data_window: null             # inferred 画像所用数据的时间范围
+  #   observations: []              # 有内容依据的观察，每条附证据链接
+  #   hypotheses: []                # 待验证假设，每条标注 自述 或 推断
+
+pillars: []                       # 固定栏目，可以为空。「开放选题」是允许的归属结果，不要写成栏目
+# - name: "<栏目名>"
+#   brief: "<这个栏目承诺给观众什么>"
+#   cadence: "<发布频率，例：daily、weekly>"
+
+sources:
+  benchmark:                      # 来源 A：对标账号
+    enabled: true
+    platform: xiaohongshu
+    accounts: []                  # 例：["<账号名>", "<账号名>"]
+    lookback_days: 90
+    outlier_rp: 2.0
+    min_baseline_posts: 5
+  market_signals:                 # 来源 B：受众与市场信号
+    enabled: true
+    include: [surveys_reports, communities, comments_qa, product_reviews, search_suggestions]
+    preferred_publishers: []      # 可选：优先使用的机构、调研公司、媒体
+  saved_references:               # 来源 C：用户收藏
+    enabled: false
+    location: "<收藏位置，例：Notion 页面链接或本地文件夹>"
+    notes_field: null             # 用户备注所在字段；没有就留 null
+
+tools:                            # 按自己的接入情况填写，不是 skill 的固定依赖
+  benchmark_scraper: "<例：某个帖子抓取工具>"
+  transcript_fetcher: "<例：某个支持转写的视频抓取工具>"
+  credentials_env: []             # 只写环境变量名，例：[APIFY_TOKEN]
+
+topic_library:                    # 已有选题库：用于去重，也是确认后的写入目标
+  enabled: false
+  location: "<数据库链接或文件路径>"
+  default_workflow_status: "<例：待确认>"
+  readiness_labels:               # 可选：写入选题库时，各内容准备度使用的标签
+    ready_for_brief: "可写 Brief"
+    needs_verification: "待核实"
+    needs_testing: "待测试"
+    drop: "放弃"
+  field_map:                      # 选题表字段 → 数据库字段名；写入前仍以数据库实际字段为准
+    title: "<字段名>"
+    audience: "<字段名>"
+    sources: "<字段名>"           # 需要能存链接的文本字段
+    primary_link: "<字段名>"      # 可选：单个 URL 字段
+    pillar: "<字段名>"
+    why: "<字段名>"
+    angle: "<字段名>"
+    readiness: "<字段名>"         # 内容准备度：可写 Brief／待核实／待测试／放弃
+    next_step: "<字段名>"
+    workflow_status: "<字段名>"   # 审批或工作流状态，和 readiness 分开
