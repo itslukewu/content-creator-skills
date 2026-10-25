@@ -43,7 +43,7 @@ sources:
     location: "<收藏位置，例：Notion 页面链接或本地文件夹>"
     notes_field: null             # 用户备注所在字段；没有就留 null
 
-tools:                            # 按自己的接入情况填写，不是 skill 的固定依赖
+tools:                            # 默认用 Apify（免费版每月 5 美元额度，用完需付费版）；见 SKILL.md
   benchmark_scraper: "<例：某个帖子抓取工具>"
   transcript_fetcher: "<例：某个支持转写的视频抓取工具>"
   credentials_env: []             # 只写环境变量名，例：[APIFY_TOKEN]

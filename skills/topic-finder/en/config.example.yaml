@@ -43,7 +43,7 @@ sources:
     location: "<where references are saved, e.g. a Notion page URL or a local folder>"
     notes_field: null             # field holding the user's notes; null if there is none
 
-tools:                            # fill in for your own setup; not a fixed dependency of the skill
+tools:                            # Apify by default (Free plan: $5 credit/month, then a paid plan); see SKILL.md
   benchmark_scraper: "<e.g. an Instagram post scraper>"
   transcript_fetcher: "<e.g. a Reels scraper with transcripts>"
   credentials_env: []             # environment variable names only, e.g. [APIFY_TOKEN]

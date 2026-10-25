@@ -7,6 +7,14 @@ description: 【中文版，供中文用户使用。英文版：../en/】为内�
 
 本文件是中文版，供中文用户使用。英文版在 `../en/`（skill 名 `topic-finder`），供英文用户使用，内容一致。两个版本只需安装其中一个。
 
+## 依赖：Apify
+
+本 skill 用 [Apify](https://apify.com) 抓取对标账号的帖子（来源 A）和视频转写（来源 C）。需要一个 Apify 账号和 API token，token 放在环境变量 `APIFY_TOKEN` 里，不要写进配置文件。
+
+- **费用**：Apify 免费版每月有 5 美元的平台额度。额度用完后，免费账号要等到下一个计费周期才能继续用；想继续用，需要升级到付费版（据 2026 年 10 月的 [Apify 价格页](https://apify.com/pricing)，Starter 版每月 19 美元，另按用量计费）。价格可能调整，以官网为准。
+- **哪些操作花钱**：每次运行按所用 Actor 自己的价格计费。比如 `apify/instagram-reel-scraper` 按条收费，带转写的还要按视频分钟数另收。大批量运行前先看一下 Actor 的价格。
+- **没有 Apify 时**：市场信号（来源 B）只需要网页搜索。Apify 不可用或额度用完时，用其余来源运行，并在运行说明里写明。
+
 ## 输入与输出
 
 - **输入**：一份 config（格式见同目录的 `config.example.yaml`）；可选：已有选题库。
