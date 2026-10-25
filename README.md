@@ -7,7 +7,7 @@ Claude skills for content creation.
 | Skill | What it does |
 |---|---|
 | [`lukes-copywriting`](skills/lukes-copywriting/SKILL.md) | Plans and refines content copy with academic research methods: narrow a topic into a question, scan competitors for gaps, distill a thesis, build the hook and structure, list evidence, state limitations. |
-| `topic-finder` — [English](skills/topic-finder/en/SKILL.md) · [中文](skills/topic-finder/zh/SKILL.md) | Finds content topics: infers an initial audience from benchmark accounts' outperforming posts, searches per pillar and across benchmark posts, market signals, and saved references, then outputs a topic table with source links and readiness. `en/` is for English-speaking users, `zh/` (中文版) for Chinese-speaking users; install one. |
+| `topic-finder` — [English](skills/topic-finder/en/SKILL.md) · [中文](skills/topic-finder/zh/SKILL.md) | Finds content topics: infers an initial audience from benchmark accounts' outperforming posts, searches per pillar and across benchmark posts, market signals, and saved references, then outputs a topic table with source links and readiness. **Requires an Apify account** (Free plan: $5 credit/month; paid plan needed beyond that). `en/` is for English-speaking users, `zh/` (中文版) for Chinese-speaking users; install one. |
 
 ## Using a skill
 

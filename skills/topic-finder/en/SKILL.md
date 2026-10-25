@@ -7,6 +7,14 @@ description: "[English version, for English-speaking users. Chinese version: ../
 
 This is the English version, for English-speaking users. The Chinese version, with the same content, is in `../zh/` (skill name `topic-finder-zh`) for Chinese-speaking users. Install only one of the two.
 
+## Requirements: Apify
+
+This skill uses [Apify](https://apify.com) to fetch benchmark posts (Source A) and video transcripts (Source C). You need an Apify account and an API token, stored in the `APIFY_TOKEN` environment variable (never in the config file).
+
+- **Cost**: the Apify Free plan includes $5 of platform credit per month. Once it is used up, Free accounts are blocked until the next billing cycle; to keep going you need a paid plan (Starter is $19/month plus usage, per [Apify pricing](https://apify.com/pricing) as of October 2026). Prices can change, so check the pricing page.
+- **What uses credit**: each Actor run is billed by the Actor's own pricing. For example, `apify/instagram-reel-scraper` charges per reel, plus a per-minute add-on for transcripts. Check an Actor's pricing before a large run.
+- **Without Apify**: market signals (Source B) only need web search. If Apify is unavailable or out of credit, run with the remaining sources and say so in the run note.
+
 ## Inputs and outputs
 
 - **Input**: a config (format in `config.example.yaml`); optionally, an existing topic library.
